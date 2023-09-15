@@ -1,29 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author User
- */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        Account user=new Account();
+        Account user1=new Account(1,525,"Joe Mama","joemama@email.com",987654321);
+        Account user2=new Account(2,6420,"John Doe","johndoe@email.com",000000);
         
-        user.setAccBal(420.69f);
-        user.setAccNum(999);
-        user.setCustName("Joe Mama");
-        user.setEmail("joemama@email.com");
-        user.setPhone(987654321);
-        user.withdrawFunds(100.50f);
-        System.out.println(user.getAccbal());
+        System.out.println("user1 funds: "+user1.getAccBal());
+        user1.depositFunds(1000);
+        System.out.println("user1 funds: "+user1.getAccBal());
+        System.out.println("user1 withdraw success: "+user1.withdrawFunds(500));
+        System.out.println("user1 funds: "+user1.getAccBal());
         
+        System.out.println("user2 funds: "+user2.getAccBal());
+        System.out.println("user2 transfer success: "+user2.transferFunds(user1, 500));
+        System.out.println("user1 funds: "+user1.getAccBal());
+        System.out.println("user2 funds: "+user2.getAccBal());
     }
-    
 }

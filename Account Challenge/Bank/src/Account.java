@@ -5,56 +5,59 @@ public class Account {
     private String email;
     private int phoneNum;
 
-    public void setAccNum(int num)
-    {
-        this.accNum=num;
+    public Account(int accNum, float accBal, String custName, String email, int phoneNum) {
+        this.accNum = accNum;
+        this.accBal = accBal;
+        this.custName = custName;
+        this.email = email;
+        this.phoneNum = phoneNum;
     }
 
-    public int getAccNum()
-    {
-        return this.accNum;
+    public Account() {
+    }
+    
+    
+
+    public int getAccNum() {
+        return accNum;
     }
 
-    public void setAccBal(float bal)
-    {
-        this.accBal=bal;
+    public void setAccNum(int accNum) {
+        this.accNum = accNum;
     }
 
-    public float getAccbal()
-    {
-        return this.accBal;
+    public float getAccBal() {
+        return accBal;
     }
 
-    public void setCustName(String name)
-    {
-        this.custName=name;
+    public void setAccBal(float accBal) {
+        this.accBal = accBal;
     }
 
-    public String getCustName()
-    {
-        return this.custName;
+    public String getCustName() {
+        return custName;
     }
 
-    public void setEmail(String email)
-    {
-        this.email=email;
+    public void setCustName(String custName) {
+        this.custName = custName;
     }
 
-    public String getEmail()
-    {
-        return this.email;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhone(int num)
-    {
-        this.phoneNum=num;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getPhone()
-    {
-        return this.phoneNum;
+    public int getPhoneNum() {
+        return phoneNum;
     }
 
+    public void setPhoneNum(int phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+    
     public void depositFunds(float funds)
     {
         this.accBal+=funds;
@@ -73,5 +76,23 @@ public class Account {
             withdrawAllowed = false;
         }
         return withdrawAllowed;
+    }
+    
+    public boolean transferFunds(Account account,float funds)
+    {
+        boolean transferSuccess;
+        float newBalance=this.accBal-funds;
+        
+        if(newBalance>=0)
+        {
+            this.accBal=newBalance;
+            account.accBal+=funds;
+            transferSuccess=true;
+        }else
+        {
+            transferSuccess=false;
+        }
+        
+        return transferSuccess;
     }
 }
