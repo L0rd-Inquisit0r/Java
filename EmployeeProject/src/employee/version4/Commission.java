@@ -1,39 +1,38 @@
-
 package employee.version4;
 
-import java.time.LocalDate;
 import java.time.format.*;
+import java.time.LocalDate;
 
 public class Commission extends Employee{
-    private double totalSales;
+	private double totalSales;
 
-    public Commission(int empID, Name empName, LocalDate empDateHired, LocalDate empBirthDate, double totalSales) {
-        super(empID, empName, empDateHired, empBirthDate);
-        this.totalSales = totalSales;
-    }
+	public Commission(int empID, Name empName, LocalDate empDateHired, LocalDate empBirthDate, double totalSales) {
+		super(empID, empName, empDateHired, empBirthDate);
+		this.totalSales = totalSales;
+	}
 
-    public Commission(int empID, Name empName, LocalDate empDateHired, LocalDate empBirthDate) {
-        super(empID, empName, empDateHired, empBirthDate);
-    }
+	public Commission(int empID, Name empName, LocalDate empDateHired, LocalDate empBirthDate) {
+		super(empID, empName, empDateHired, empBirthDate);
+	}
 
-    public Commission(double totalSales) {
-        super();
-        this.totalSales = totalSales;
-    }
+	public Commission(double totalSales) {
+		super();
+		this.totalSales = totalSales;
+	}
 
-    public Commission() {
-        super();
-    }
+	public Commission() {
+		super();
+	}
 
-    public double getTotalSales() {
-        return totalSales;
-    }
+	public double getTotalSales() {
+		return totalSales;
+	}
 
-    public void setTotalSales(double totalSales) {
-        this.totalSales = totalSales;
-    }
+	public void setTotalSales(double totalSales) {
+		this.totalSales = totalSales;
+	}
 	
-    public double computeSalary(){
+	public double computeSalary(){
         double salary=0;
         double sales=this.totalSales;
         
@@ -53,9 +52,10 @@ public class Commission extends Employee{
         return salary;
     }
     
-    @Override
     public void displayInfo(){
-        System.out.println(this.toString());
+        String info=toString();
+        
+        System.out.println(info);
     }
     
     @Override
@@ -64,7 +64,9 @@ public class Commission extends Employee{
         String dateHired=super.getEmpDateHired().format(dateFormat);
         String dateBirth=super.getEmpBirthDate().format(dateFormat);
         
-        return String.format("ID: %d\nNAME: %s\nDate Hired: %s\nDate of Birth: %s\nTotal Sales: %.2f",
+        String info=String.format("ID: %d\nNAME: %s\nDate Hired: %s\nDate of Birth: %s\nTotal Sales: %.2f",
                 super.getEmpID(),super.getEmpName().toString(),dateHired,dateBirth,this.totalSales);
+
+        return info;
     }
 }
